@@ -14,7 +14,7 @@ class Trainer:
         self.config = config
         self.n_epochs = config['n_epochs']
         self.optimizer = None
-        self.opt_fn = lambda model: Adam(model.parameters(), config['lr'])
+        self.opt_fn = lambda model: Adam(model.parameters(), lr, weight_decay=1e-5)
         self.model = None
         self.history = None
         self.loss_fn = CrossEntropyLoss()

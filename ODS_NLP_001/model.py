@@ -13,9 +13,9 @@ class ModelForClassification(torch.nn.Module):
         self.n_classes = config['num_classes']
         self.dropout_rate = config['dropout_rate']
         self.bert = AutoModel.from_pretrained(self.model_name)
-        self.pre_classifier = torch.nn.Linear(312, 768)
+        self.pre_classifier = torch.nn.Linear(312, 312)
         self.dropout = torch.nn.Dropout(self.dropout_rate)
-        self.classifier = torch.nn.Linear(768, self.n_classes)
+        self.classifier = torch.nn.Linear(312, self.n_classes)
 
     def forward(self, input_ids, attention_mask,):
         output = self.bert(
